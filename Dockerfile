@@ -1,5 +1,5 @@
 # Base node image
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Stage 1: Prune the monorepo for the target app
 FROM base AS builder
