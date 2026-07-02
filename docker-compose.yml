@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  orders-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: orders-service
+    ports:
+      - "4001:4001"
+    environment:
+      - NODE_ENV=production
+
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: product-service
+    ports:
+      - "4002:4002"
+    environment:
+      - NODE_ENV=production
+
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: user-service
+    ports:
+      - "4003:4003"
+    environment:
+      - NODE_ENV=production
