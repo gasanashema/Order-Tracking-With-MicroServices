@@ -4,7 +4,7 @@ import { MessagePattern } from '@nestjs/microservices';
 @Controller('products')
 export class ProductsController {
     @MessagePattern("get_product")
-    getOrder(id:any){
+    getProduct(id:number){
         return {id,name:"Laptop",price:1000}
     }
 }

@@ -5,6 +5,7 @@ import { MessagePattern } from '@nestjs/microservices';
 export class OrdersController {
     @MessagePattern("create_order")
     createOrder(order:any){
+        console.log({message: "Order received from Orders Microservice"}, order)
         return {message: "Order Created", order}
     }
 }
