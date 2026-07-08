@@ -1,7 +1,27 @@
 version: '3.8'
 
 services:
+  api-gateway:
+    image: gasanashema/api-gateway:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - USERS_SERVICE_HOST=user-service
+      - ORDERS_SERVICE_HOST=orders-service
+      - PRODUCTS_SERVICE_HOST=product-service
+    depends_on:
+      - user-service
+      - orders-service
+      - product-service
+
   orders-service:
+    image: gasanashema/orders-service:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +33,7 @@ services:
       - NODE_ENV=production
 
   product-service:
+    image: gasanashema/product-service:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,6 +45,7 @@ services:
       - NODE_ENV=production
 
   user-service:
+    image: gasanashema/user-service:latest
     build:
       context: .
       dockerfile: Dockerfile
