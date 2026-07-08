@@ -9,9 +9,10 @@ import { OrdersController } from './orders/orders.controller';
   imports: [
     ClientsModule.register([
       {
-        name: MICROSERVICES_CLIENTS.USERS_SERICE,
+        name: MICROSERVICES_CLIENTS.USERS_SERVICE,
         transport: Transport.TCP,
         options:{
+          host: process.env.USERS_SERVICE_HOST || 'localhost',
           port: 4003
         }
       },
@@ -19,6 +20,7 @@ import { OrdersController } from './orders/orders.controller';
         name: MICROSERVICES_CLIENTS.ORDERS_SERVICE,
         transport: Transport.TCP,
         options:{
+          host: process.env.ORDERS_SERVICE_HOST || 'localhost',
           port: 4001
         }
       },
@@ -26,6 +28,7 @@ import { OrdersController } from './orders/orders.controller';
         name: MICROSERVICES_CLIENTS.PRODUCTS_SERVICE,
         transport: Transport.TCP,
         options:{
+          host: process.env.PRODUCTS_SERVICE_HOST || 'localhost',
           port: 4002
         }
       }
